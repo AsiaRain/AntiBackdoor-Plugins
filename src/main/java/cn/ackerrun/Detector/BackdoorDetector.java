@@ -1,13 +1,11 @@
 package cn.ackerrun.Detector;
 
+import cn.ackerrun.config.ConfigManager;
+
 import javax.xml.bind.DatatypeConverter;
 import java.util.*;
 
-/***********************
- *   @Author: Rain
- *   @Date: 2023/3/27
- * **********************
- */
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -15,16 +13,20 @@ import java.security.MessageDigest;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-
+/***********************
+ *   @Author: Rain
+ *   @Date: 2023/3/27
+ * **********************
+ */
 public class BackdoorDetector {
 
    private static final Set<String> KNOWN_BACKDOOR_PLUGINS = new HashSet<>();
    private static final Pattern CLASS_NAME_PATTERN = Pattern.compile("^[a-zA-Z][a-zA-Z0-9_]*(\\$[a-zA-Z][a-zA-Z0-9_]*)*$");
 
-   static {
+/*   static {
       // 添加已知的后门插件名称
       KNOWN_BACKDOOR_PLUGINS.add("EvilPlugin");
-   }
+   }*/
 
    /**
     * 检查指定的插件是否为后门插件。
@@ -35,8 +37,8 @@ public class BackdoorDetector {
     * @return true 如果该插件被检测到为后门插件；false 反之。
     * @throws IOException 如果在读取文件时出现错误。
     */
-   public static boolean isBackdoorPlugin(String pluginName, String filePath, String[] authors) throws IOException {
-      if (KNOWN_BACKDOOR_PLUGINS.contains(pluginName)) {
+   public static boolean isBackdoorPlugin(String pluginName, String filePath, String[] authors, ConfigManager configManager) throws IOException {
+      if (configManager.isKnownBackdoorPlugin(pluginName)) {
          return true;
       }
 
