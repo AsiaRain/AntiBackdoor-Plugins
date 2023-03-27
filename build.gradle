@@ -2,6 +2,10 @@ plugins {
     id 'java'
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = "utf-8"
+}
+
 group = 'cn'
 version = '1.0-SNAPSHOT'
 
