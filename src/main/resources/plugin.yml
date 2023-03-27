@@ -1,3 +1,14 @@
-name: AntiBackdoor-Plugins
-version: '${version}'
+name: AntiBackdoor
 main: cn.ackerrun.AntiBackdoor
+version: 1.0
+author: AckerRun
+description: Prevent malicious plug-ins.
+api-version: 1.17
+commands:
+  antibackdoor:
+    description: Check if a plugin is a backdoor plugin.
+    usage: /antibackdoor <plugin>
+permissions:
+  antibackdoor.detect:
+    description: Allows players to use the /antibackdoor command.
+    default: op
