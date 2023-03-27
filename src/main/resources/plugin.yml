@@ -1,0 +1,3 @@
+name: AntiBackdoor-Plugins
+version: '${version}'
+main: cn.ackerrun.AntiBackdoor
